@@ -24,40 +24,35 @@ handleClick(event){
       if (this.state.question!=='')
       {
           var ans='';
-            try
-              {
-                  ans = eval(this.state.question);
-              }
-              catch(err)
-              {
-                  this.setState({answer: "Math Error"});
-              }
-              if (ans===undefined)
-                  this.setState({answer: "Math Error"});
- 
-              
-              else
-                  this.setState({ answer: ans , question: ''});
-              break;
+          try
+            {
+              ans = eval(this.state.question);
           }
-    }
+          catch(err)
+            {
+              this.setState({answer: "Math Error"});
+          }
+          if (ans===undefined) this.setState({answer: "Math Error"});
+            else
+              this.setState({ answer: ans , question: ''});
+            break;
+          }
+      }
     case 'Clear': {
- 
       this.setState({ question: '', answer: '' });
       break;
     }
  
     case 'Delete': {
       var str = this.state.question;
-        str = str.substr(0,str.length-1);
-        this.setState({question: str});
-        break;
+      str = str.substr(0,str.length-1);
+      this.setState({question: str});
+      break;
     }
  
   default: {
- 
-      this.setState({ question: this.state.question + value})
-      break;
+    this.setState({ question: this.state.question + value})
+    break;
     }
   }
 }
